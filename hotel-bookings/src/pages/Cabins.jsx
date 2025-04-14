@@ -21,7 +21,9 @@ const Cabins = () => {
 
       <Row type="vertical">
         <CabinTable />
-        <Button onClick={() => setShowForm(!showForm)}>Add new Cabin</Button>
+        <Button variation="primary" onClick={() => setShowForm(!showForm)}>
+          Add new Cabin
+        </Button>
         {showForm && <CreateCabinForm />}
       </Row>
     </>
