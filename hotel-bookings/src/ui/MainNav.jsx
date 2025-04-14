@@ -1,38 +1,3 @@
-// import React from "react";
-// import styled from "styled-components";
-
-// const MainNav = () => {
-
-//   const NavList=styled.ul`
-//     display: flex;
-//     flex-direction: column;
-//     gap: 0.8rem;
-//   `
-
-//   const link=styled.a`
-//   &;link,
-// &:visited{
-
-//   display: flex;
-//   flex-direction: column;
-//   gap: 0.8rem;
-
-//   color: var(--color-grey-600);
-//     font-size: 1.6rem;
-//     font-weight: 500;
-//     padding: 1.2rem 2.4rem;
-//     transition: all 0.3s;
-// }
-// `
-//   return( <nav>
-//     <ul>
-//       <li></li>
-//     </ul>
-//   </nav>;)
-// };
-
-// export default MainNav;
-
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import {
@@ -93,7 +58,7 @@ function MainNav() {
     <nav>
       <NavList>
         <li>
-          <StyledNavLink to="/">
+          <StyledNavLink to="/dashboard">
             <HiOutlineHome />
             <span>Home</span>
           </StyledNavLink>
