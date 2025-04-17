@@ -24,8 +24,8 @@ const Cabins = () => {
         <Button variation="primary" onClick={() => setShowForm(!showForm)}>
           Add new Cabin
         </Button>
-        {showForm && <CreateCabinForm />}
       </Row>
+      {showForm && <CreateCabinForm />}
     </>
   );
 };

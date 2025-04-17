@@ -47,16 +47,17 @@ const CreateCabinForm = ({ cabinToEdit = {} }) => {
   const isWorking = isCreating || isEditing;
 
   function onSubmit(data) {
-    mutate({ ...data, image: data.image[0] });
+    const image = typeof data.image === "string" ? data.image : data.image[0];
+
+    if (isEditSession) {
+      editCabin({ newCabinData: { ...data, image }, id: editId });
+    } else {
+      createCabin({ ...data, image: image });
+    }
+    // mutate({ ...data, image: data.image[0] });
   }
 
-  function onError(data) {
-    if (isEditSession) {
-      editCabin();
-    } else {
-      createCabin({ ...data, image: data.image[0] });
-    }
-  }
+  function onError(data) {}
 
   return (
     <Form onSubmit={handleSubmit(onSubmit, onError)}>
