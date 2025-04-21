@@ -47,13 +47,12 @@ const CreateCabinForm = ({ cabinToEdit = {} }) => {
   const isWorking = isCreating || isEditing;
 
   function onSubmit(data) {
-    const image = typeof data.image === "string" ? data.image : data.image[0];
+    const image = data.image instanceof FileList ? data.image[0] : data.image;
 
-    if (isEditSession) {
+    if (isEditSession)
       editCabin({ newCabinData: { ...data, image }, id: editId });
-    } else {
-      createCabin({ ...data, image: image });
-    }
+    else createCabin({ ...data, image: image });
+
     // mutate({ ...data, image: data.image[0] });
   }
 
@@ -89,7 +88,7 @@ const CreateCabinForm = ({ cabinToEdit = {} }) => {
 
       <FormRow label="Regular Price" error={errors?.regularPrice?.message}>
         <Input
-          type="text"
+          type="number"
           id="regularPrice"
           disabled={isWorking}
           {...register("regularPrice", {
@@ -144,7 +143,7 @@ const CreateCabinForm = ({ cabinToEdit = {} }) => {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset" disabled={isWorking}>
+        <Button variation="secondary" type="reset">
           Cancel
         </Button>
         <Button variation="primary" disabled={isWorking}>
